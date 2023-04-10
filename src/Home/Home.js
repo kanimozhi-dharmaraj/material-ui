@@ -1,4 +1,4 @@
-import { Button, Checkbox } from "@mui/material";
+import { Button, Checkbox, InputLabel, MenuItem, Select } from "@mui/material";
 import React, {  useState,useContext } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import { stateContext } from "../Context/StateContext";
@@ -109,11 +109,14 @@ const handleSearch = (event) => {
           <div>No Matches Found!</div>
         )
         }
-           <select onChange={(e) => sortingData(e.target.value)}>
-          <option value="none">Sort By</option>
-          <option value="asc">Ascending Order</option>
-          <option value="desc">Descending Order</option>
-        </select>
+          <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
+           <Select
+                     labelId="demo-simple-select-autowidth-label"
+                     id="demo-simple-select-autowidth" autoWidth label="Sort By" onChange={(e) => sortingData(e.target.value)}>
+          <MenuItem value="none">None</MenuItem>
+          <MenuItem value="asc">Ascending Order</MenuItem>
+          <MenuItem value="desc">Descending Order</MenuItem>
+        </Select>
        <Link to="/Form">Go to Form</Link>
        <Button variant="outlined" onClick={getAllTask}>ALL</Button>
        <Button  variant="contained" onClick={getFilteredTasks}>Completed</Button>
