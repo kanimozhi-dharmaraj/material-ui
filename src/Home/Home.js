@@ -74,7 +74,7 @@ const handleDelete = (id) => {
 const handleSearch = (event) => {
   setSearch(event.target.value);
   if (event.target.value === "") {
-    dispatch({ type: "TASKS..", payload: state.tasks });
+    dispatch({ type: "TASKS", payload: state.tasks });
   } else {
     const searchItems = state.tasks.filter((item) =>
       item.name.toLowerCase().includes(event.target.value.toLowerCase())
@@ -89,7 +89,7 @@ const handleSearch = (event) => {
       <div>
         Task<br></br>
         <input type="text" placeholder="Search" value={search} onChange={handleSearch} />
-        {state.tasks ?
+        {state.tasks && state.tasks.length>0 ?
           (state.tasks.map((item, index) => (
             <div key={index}>
               <b>Id :</b>
